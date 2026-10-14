@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limasawa Island | Tour Guide List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">🌴 Limasawa<span>TourGuide</span></div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#guides">Tour Guides</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="eyebrow">EXPLORE SOUTHERN LEYTE</p>
+            <h1>Discover Limasawa<br>with Local Tour Guides</h1>
+            <p>
+                Meet local guides who can help you discover
+                the beauty, history, and culture of Limasawa Island.
+            </p>
+            <a href="#guides" class="btn btn-primary">Explore Tour Guides</a>
+        </div>
+    </section>
+
+    <main class="container" id="guides">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">GUIDE DIRECTORY</p>
+                <h2>Our Tour Guides</h2>
+                <p class="muted">Find and manage registered tour guides.</p>
+            </div>
+            <button class="btn btn-primary" id="addBtn">
+                + Add Tour Guide
+            </button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <span>Total Guides</span>
+                <h3 id="totalGuides">0</h3>
+            </div>
+            <div class="stat-card">
+                <span>Active Guides</span>
+                <h3 id="activeGuides">0</h3>
+            </div>
+            <div class="stat-card">
+                <span>Specializations</span>
+                <h3 id="totalSpecializations">0</h3>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search by name, phone, or specialization..."
+                aria-label="Search tour guides"
+            >
+
+            <select id="statusFilter" aria-label="Filter by status">
+                <option value="all">All Status</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tour Guide</th>
+                        <th>Contact</th>
+                        <th>Specialization</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="guideTableBody"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">🧭</div>
+                <h3>No tour guides found</h3>
+                <p>Add a new tour guide or change your search.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="about-section" id="about">
+        <div class="container about-content">
+            <p class="eyebrow">ABOUT THE PROJECT</p>
+            <h2>Supporting Local Tourism</h2>
+            <p>
+                This website helps organize tour guide information
+                in Limasawa Island. It allows users to add, search,
+                update, and remove tour guide records easily.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Limasawa TourGuide | Tour Guide Management System</p>
+    </footer>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="guideModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">GUIDE INFORMATION</p>
+                    <h2 id="modalTitle">Add Tour Guide</h2>
+                </div>
+                <button class="close-btn" id="closeBtn"
+                    aria-label="Close form">&times;</button>
+            </div>
+
+            <form id="guideForm">
+                <input type="hidden" id="guideId">
+
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" maxlength="150"
+                    placeholder="Enter full name" required>
+
+                <label for="phone">Contact Number *</label>
+                <input type="tel" id="phone" maxlength="30"
+                    placeholder="Enter contact number" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" maxlength="255"
+                    placeholder="Enter email address">
+
+                <label for="address">Address</label>
+                <input type="text" id="address"
+                    placeholder="Limasawa Island, Southern Leyte">
+
+                <label for="specialization">Specialization *</label>
+                <select id="specialization" required>
+                    <option value="">Select specialization</option>
+                    <option value="Historical Tours">Historical Tours</option>
+                    <option value="Island Hopping">Island Hopping</option>
+                    <option value="Snorkeling">Snorkeling</option>
+                    <option value="Local Culture">Local Culture</option>
+                    <option value="Nature Tours">Nature Tours</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary"
+                        id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary"
+                        id="saveBtn">Save Tour Guide</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
